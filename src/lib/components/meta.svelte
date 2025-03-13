@@ -12,7 +12,7 @@
     itemprop="description"
     content="For all those people that find it more convenient to bother you with their question than to search it on DuckDuckGo for themselves."
   />
-  <meta itemprop="image" content="ICON_URL_PLACEHOLDER" />
+  <meta itemprop="image" content="/favicon.png" />
 
   <!-- Facebook Meta Tags -->
   <meta property="og:url" content="https://lmdg4u.org" />
@@ -22,7 +22,7 @@
     property="og:description"
     content="For all those people that find it more convenient to bother you with their question than to search it on DuckDuckGo for themselves."
   />
-  <meta property="og:image" content="ICON_URL_PLACEHOLDER" />
+  <meta property="og:image" content="/favicon.png" />
 
   <!-- Twitter Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -31,5 +31,5 @@
     name="twitter:description"
     content="For all those people that find it more convenient to bother you with their question than to search it on DuckDuckGo for themselves."
   />
-  <meta name="twitter:image" content="ICON_URL_PLACEHOLDER" />
+  <meta name="twitter:image" content="/favicon.png" />
 </svelte:head>
