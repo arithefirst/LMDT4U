@@ -19,8 +19,8 @@ Inspired by [Let me Google That For You](https://letmegooglethat.com)
 1.  Clone the repository:
 
     ```bash
-    git clone [your-repo-url]
-    cd [your-repo-name]
+    git clone https://github.com/arithefirst/LMDT4U
+    cd LMDT4U
     ```
 
 2.  Install the dependencies using bun:
