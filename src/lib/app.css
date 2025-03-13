@@ -1,3 +1,4 @@
+@import '$lib/font.css';
 @import "tailwindcss";
 
 @theme {
@@ -5,4 +6,5 @@
   --color-text: #fff;
   --color-text-home: #eee;
   --color-searchbar: #333;
+  --font-sans: 'Proxima Nova';
 }
