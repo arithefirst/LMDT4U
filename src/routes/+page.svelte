@@ -1,7 +1,7 @@
 <script lang="ts">
   import Searchbar from '$lib/components/searchbar.svelte';
   let search: boolean = $state(true);
-  let displayText: string = $state('Enter a search term to generate your URL');
+  let displayText: string = $state('Type a question, click search');
 </script>
 
 <div class="flex flex-col items-center justify-center">

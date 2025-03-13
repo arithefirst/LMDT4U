@@ -8,14 +8,13 @@
     displayText: string;
   };
 
-  let { search = $bindable(true), displayText = $bindable('Enter a search term to generate your URL') }: Props =
-    $props();
+  let { search = $bindable(true), displayText = $bindable('Type a question, click search') }: Props = $props();
   let searchUrl: string = $state(`${page.url.origin}?q=`);
   let value: string = $state('');
 
   function enterCopyMode() {
     searchUrl += encodeURI(value);
-    displayText = 'Hit the button to copy your URL';
+    displayText = 'All done! Share the link above.';
     search = !search;
   }
 
