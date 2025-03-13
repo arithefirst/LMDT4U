@@ -11,4 +11,4 @@
 
 <Searchbar bind:search bind:displayText />
 
-<p class="font-bold">{displayText}</p>
+<p class="mb-[228px] font-bold">{displayText}</p>
