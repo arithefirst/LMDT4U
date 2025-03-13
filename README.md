@@ -5,14 +5,14 @@ Inspired by [Let me Google That For You](https://letmegooglethat.com)
 
 ## Techstack
 
-*   [Bun](https://bun.sh)
-*   [SvelteKit](https://kit.svelte.dev/)
-*   [Tailwind CSS](https://tailwindcss.com/)
-*   [Lucide Icons](https://www.lucide.dev)
+- [Bun](https://bun.sh)
+- [SvelteKit](https://kit.svelte.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Lucide Icons](https://www.lucide.dev)
 
 ## Prerequisites
 
-*   [Bun](https://bun.sh/) installed on your system.
+- [Bun](https://bun.sh/) installed on your system.
 
 ## Installation
 
@@ -52,6 +52,7 @@ Inspired by [Let me Google That For You](https://letmegooglethat.com)
     ```bash
     bun run preview
     ```
+
 ---
 
 <p align="center">The DuckDuckGo name, logos, trade dress, and other brand elements are trademarks of Duck Duck Go, Inc.
