@@ -3,7 +3,12 @@
   const { children }: { children: Snippet } = $props();
 
   // Load Tailwind
-  import '$lib/app.css' 
+  import '$lib/app.css';
 </script>
 
-{@render children()}
+<main class="bg-base text-text flex h-screen w-screen flex-col items-center justify-center">
+  {@render children()}
+  <footer class="absolute bottom-2 w-full text-center text-xs">
+    The DuckDuckGo name, logos, trade dress, and other brand elements are trademarks of Duck Duck Go, Inc.
+  </footer>
+</main>

@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+@theme {
+  --color-base: #111;
+  --color-text: #fff;
+  --color-text-home: #eee;
+  --color-searchbar: #333;
+}
