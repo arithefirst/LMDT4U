@@ -28,8 +28,9 @@
 
 @font-face {
   font-family: 'Proxima Nova';
-  src: url('/fonts/proximanova_black.otf') format('opentype'),
-       url('/fonts/proximanova_black.ttf') format('truetype');
+  src:
+    url('/fonts/proximanova_black.otf') format('opentype'),
+    url('/fonts/proximanova_black.ttf') format('truetype');
   font-weight: 900;
   font-style: normal;
   font-display: swap;

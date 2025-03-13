@@ -1,5 +1,5 @@
 @import '$lib/font.css';
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   --color-base: #111;
