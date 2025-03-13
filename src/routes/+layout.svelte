@@ -1,11 +1,13 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
+  import Meta from '$lib/components/meta.svelte';
   const { children }: { children: Snippet } = $props();
 
   // Load Tailwind
   import '$lib/app.css';
 </script>
 
+<Meta />
 <main class="bg-base text-text flex h-screen w-screen flex-col items-center justify-center">
   {@render children()}
   <footer class="absolute bottom-2 w-full text-center text-xs">
