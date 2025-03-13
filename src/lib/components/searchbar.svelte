@@ -2,6 +2,7 @@
   import { Copy, Search, X as X_Icon } from 'lucide-svelte';
   import { page } from '$app/state';
   import { blur } from 'svelte/transition';
+  import { toast } from 'svelte-sonner';
 
   type Props = {
     search: boolean;
@@ -21,10 +22,10 @@
   async function copyUrl() {
     try {
       await navigator.clipboard.writeText(searchUrl);
-      alert('URL copied to clipboard!'); // Optional: Provide user feedback
+      toast('URL copied to clipboard');
     } catch (err) {
       console.error('Failed to copy: ', err);
-      alert('Failed to copy URL to clipboard.'); // Optional: Inform user of failure
+      toast('Failed to copy URL to clipboard.');
     }
   }
 </script>

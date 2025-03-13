@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
+  import { Toaster } from 'svelte-sonner';
   import Meta from '$lib/components/meta.svelte';
   const { children }: { children: Snippet } = $props();
 
@@ -18,3 +19,12 @@
     >
   </footer>
 </main>
+<Toaster
+  position="bottom-center"
+  toastOptions={{
+    unstyled: true,
+    classes: {
+      toast: 'bg-text-dark text-text border-searchbar w-full rounded-sm border-2 px-3 py-2 text-center',
+    },
+  }}
+/>
