@@ -35,7 +35,12 @@
   items-center justify-center rounded-lg"
 >
   {#if search}
-    <input in:blur={{ duration: 250 }} bind:value class="caret-ddg-blue50 h-[42px] flex-grow pl-3 outline-none" />
+    <input
+      in:blur={{ duration: 250 }}
+      bind:value
+      class="caret-ddg-blue50 h-[42px] flex-grow pl-3 outline-none"
+      onkeydown={(e) => e.key === 'Enter' && enterCopyMode()}
+    />
     {#if value.length > 0}
       <button class="hover:text-text h-[42px] cursor-pointer p-2 text-[#999999]" onclick={() => (value = '')}
         ><X_Icon size={18} /></button
