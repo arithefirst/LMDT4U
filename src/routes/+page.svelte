@@ -1,9 +1,10 @@
 <script lang="ts">
   import { page } from '$app/state';
   import Searchbar from '$lib/components/searchbar.svelte';
+  import { blur } from 'svelte/transition';
   import { onMount } from 'svelte';
   let mode: 'search' | 'copy' | 'working' = $state('search');
-  let displayText: string = $state('Type a question, click search');
+  let displayText: string = $state('');
   let value: string = $state('');
   let workingValue: string = $state('');
 
@@ -16,12 +17,14 @@
   onMount(async () => {
     if (query) {
       mode = 'working';
-      displayText = '1. Type your question';
+      displayText = 'Step 1. Type your question';
       await sleep(1500);
       for (const c of decodeURI(query)) {
         workingValue += c;
         await sleep(69);
       }
+    } else {
+      displayText = 'Type a question, click search';
     }
   });
 </script>
@@ -33,4 +36,6 @@
 
 <Searchbar bind:mode bind:displayText bind:value bind:workingValue />
 
-<p class="mb-[228px] font-bold">{displayText}</p>
+{#key displayText}
+  <p in:blur class="mb-[228px] h-6 font-bold">{displayText}</p>
+{/key}
