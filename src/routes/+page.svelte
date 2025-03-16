@@ -4,6 +4,7 @@
   import Searchbar from '$lib/components/searchbar.svelte';
   import { onMount } from 'svelte';
   import { blur } from 'svelte/transition';
+  import RegisteredTrademark from '$lib/components/registeredTrademark.svelte';
 
   // Searchbar data
   let mode: 'search' | 'copy' | 'working' = $state('search');
@@ -41,7 +42,10 @@
 {/if}
 
 <div class="flex flex-col items-center justify-center">
-  <img src="images/DuckDuckGo_Logo-Dax_Solo.svg" alt="DuckDuckGo Logo" width="120" />
+  <div class="relative size-30">
+    <img src="images/DuckDuckGo_Logo-Dax_Solo.svg" alt="DuckDuckGo Logo" width="120" height="120" />
+    <RegisteredTrademark />
+  </div>
   <h1 class="w-full pt-3 text-center text-4xl">Let Me DDG That For You...</h1>
 </div>
 
