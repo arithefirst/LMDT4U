@@ -5,12 +5,24 @@
   let mode: 'search' | 'copy' | 'working' = $state('search');
   let displayText: string = $state('Type a question, click search');
   let value: string = $state('');
+  let workingValue: string = $state('');
 
   const query: string | null = page.url.searchParams.get('q');
 
-  onMount(() => {
-    if (query) value = query;
-    mode = 'working';
+  function sleep(n: number): Promise<void> {
+    return new Promise((resolve) => setTimeout(resolve, n));
+  }
+
+  onMount(async () => {
+    if (query) {
+      mode = 'working';
+      displayText = '1. Type your question';
+      await sleep(1500);
+      for (const c of decodeURI(query)) {
+        workingValue += c;
+        await sleep(69);
+      }
+    }
   });
 </script>
 
@@ -19,6 +31,6 @@
   <h1 class="w-full pt-3 text-center text-4xl">Let Me DDG That For You...</h1>
 </div>
 
-<Searchbar bind:mode bind:displayText bind:value />
+<Searchbar bind:mode bind:displayText bind:value bind:workingValue />
 
 <p class="mb-[228px] font-bold">{displayText}</p>

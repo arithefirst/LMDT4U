@@ -8,12 +8,14 @@
     mode: 'search' | 'copy' | 'working';
     displayText: string;
     value: string;
+    workingValue: string;
   };
 
   let {
     mode = $bindable('search'),
     displayText = $bindable('Type a question, click search'),
     value = $bindable(''),
+    workingValue = $bindable(''),
   }: Props = $props();
   let searchUrl: string = $state(`${page.url.origin}?q=`);
 
@@ -73,7 +75,7 @@
       class="caret-ddg-blue50 h-[42px] flex-grow cursor-not-allowed pl-3 outline-none"
       disabled
       aria-disabled={true}
-      bind:value
+      bind:value={workingValue}
     />
     {#if value.length > 0}
       <button class="h-[42px] cursor-not-allowed p-2 text-[#999999]" disabled aria-disabled={true}
