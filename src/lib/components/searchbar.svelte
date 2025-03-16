@@ -46,6 +46,7 @@
       bind:value
       class="caret-ddg-blue50 h-[42px] flex-grow pl-3 outline-none"
       onkeydown={(e) => e.key === 'Enter' && enterCopyMode()}
+      placeholder="Search DuckDuckGo..."
     />
     {#if value.length > 0}
       <button class="hover:text-text h-[42px] cursor-pointer p-2 text-[#999999]" onclick={() => (value = '')}
