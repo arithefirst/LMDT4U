@@ -1,12 +1,19 @@
 <script lang="ts">
   import { page } from '$app/state';
+  import Pointer from '$lib/components/pointer.svelte';
   import Searchbar from '$lib/components/searchbar.svelte';
-  import { blur } from 'svelte/transition';
   import { onMount } from 'svelte';
+  import { blur } from 'svelte/transition';
+
+  // Searchbar data
   let mode: 'search' | 'copy' | 'working' = $state('search');
   let displayText: string = $state('');
   let value: string = $state('');
   let workingValue: string = $state('');
+
+  // Pointer data
+  let x = $state(16);
+  let y = $state(16);
 
   const query: string | null = page.url.searchParams.get('q');
 
@@ -28,6 +35,10 @@
     }
   });
 </script>
+
+{#if mode == 'working'}
+  <Pointer bind:x bind:y />
+{/if}
 
 <div class="flex flex-col items-center justify-center">
   <img src="images/DuckDuckGo_Logo-Dax_Solo.svg" alt="DuckDuckGo Logo" width="120" />
