@@ -17,7 +17,7 @@
   viewBox="0 0 28 28"
   enable-background="new 0 0 28 28"
   xml:space="preserve"
-  class="absolute h-12"
+  class="absolute h-12 transition-all duration-500"
   style={`left: ${x - 14}px;top: ${y - 10}px;`}
 >
   <polygon fill="#FFFFFF" points="8.2,20.9 8.2,4.9 19.8,16.5 13,16.5 12.6,16.6 " />

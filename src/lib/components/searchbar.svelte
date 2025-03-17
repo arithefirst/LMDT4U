@@ -3,12 +3,15 @@
   import { page } from '$app/state';
   import { blur } from 'svelte/transition';
   import { toast } from 'svelte-sonner';
+  import type { Coordinate } from '$lib';
 
   type Props = {
     mode: 'search' | 'copy' | 'working';
     displayText: string;
     value: string;
     workingValue: string;
+    workingBoxCoords: Coordinate;
+    workingBtnCoords: Coordinate;
   };
 
   let {
@@ -16,8 +19,12 @@
     displayText = $bindable('Type a question, click search'),
     value = $bindable(''),
     workingValue = $bindable(''),
+    workingBoxCoords = $bindable({ x: 0, y: 0 }),
+    workingBtnCoords = $bindable({ x: 0, y: 0 }),
   }: Props = $props();
   let searchUrl: string = $state(`${page.url.origin}?q=`);
+  let workingBox = $state<HTMLInputElement>();
+  let workingBtn = $state<HTMLButtonElement>();
 
   function enterCopyMode() {
     searchUrl += encodeURI(value);
@@ -34,6 +41,20 @@
       toast('Failed to copy URL to clipboard.');
     }
   }
+
+  $effect(() => {
+    if (workingBox) {
+      workingBoxCoords.x = workingBox.getBoundingClientRect().x;
+      workingBoxCoords.y = workingBox.getBoundingClientRect().y;
+    }
+
+    if (workingBtn) {
+      workingBtnCoords.x = workingBtn.getBoundingClientRect().x;
+      workingBtnCoords.y = workingBtn.getBoundingClientRect().y;
+    }
+  });
+
+  $inspect(workingBoxCoords);
 </script>
 
 <div
@@ -77,6 +98,7 @@
       disabled
       aria-disabled={true}
       bind:value={workingValue}
+      bind:this={workingBox}
     />
     {#if value.length > 0}
       <button class="h-[42px] cursor-not-allowed p-2 text-[#999999]" disabled aria-disabled={true}
@@ -87,7 +109,7 @@
       disabled
       aria-disabled={true}
       class="bg-ddg-blue30 text-text-dark h-[42px] cursor-not-allowed rounded-r-lg px-4 py-1.5"
-      ><Search size={18} /></button
+      bind:this={workingBtn}><Search size={18} /></button
     >
   {/if}
 </div>
