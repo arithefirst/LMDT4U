@@ -4,7 +4,6 @@
   import { blur } from 'svelte/transition';
   import { toast } from 'svelte-sonner';
   import type { Coordinate } from '$lib';
-  import { onMount } from 'svelte';
 
   type Props = {
     mode: 'search' | 'copy' | 'working';
