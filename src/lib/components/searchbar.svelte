@@ -4,6 +4,7 @@
   import { blur } from 'svelte/transition';
   import { toast } from 'svelte-sonner';
   import type { Coordinate } from '$lib';
+  import { onMount } from 'svelte';
 
   type Props = {
     mode: 'search' | 'copy' | 'working';
@@ -42,7 +43,7 @@
     }
   }
 
-  $effect(() => {
+  function updateCoords() {
     if (workingBox) {
       workingBoxCoords.x = workingBox.getBoundingClientRect().x;
       workingBoxCoords.y = workingBox.getBoundingClientRect().y;
@@ -52,10 +53,12 @@
       workingBtnCoords.x = workingBtn.getBoundingClientRect().x;
       workingBtnCoords.y = workingBtn.getBoundingClientRect().y;
     }
-  });
+  }
 
-  $inspect(workingBoxCoords);
+  $effect(() => updateCoords());
 </script>
+
+<svelte:window onresize={updateCoords} />
 
 <div
   class="bg-searchbar shadow-[0 1px 3px rgba(0,0,0,.5)] my-6 flex h-[42px] w-11/12 max-w-[620px]
