@@ -24,7 +24,7 @@
     workingBtnCoords = $bindable({ x: 0, y: 0 }),
   }: Props = $props();
   let searchUrl: string = $state(`${page.url.origin}?q=`);
-  let workingBox = $state<HTMLInputElement>();
+  let workingBox = $state<HTMLDivElement>();
   let workingBtn = $state<HTMLButtonElement>();
 
   function enterCopyMode() {
@@ -95,23 +95,17 @@
       onclick={copyUrl}><Copy size={18} /></button
     >
   {:else}
-    <input
-      in:blur={{ duration: 250 }}
-      class="caret-ddg-blue50 h-[42px] flex-grow cursor-not-allowed pl-3 outline-none"
-      disabled
-      aria-disabled={true}
-      bind:value={workingValue}
-      bind:this={workingBox}
-    />
+    <div class="fixed top-0 left-0 h-screen w-screen cursor-not-allowed"></div>
+    <div bind:this={workingBox} in:blur={{ duration: 250 }} class="flex h-[42px] flex-grow items-center pl-3">
+      {workingValue}
+    </div>
     {#if value.length > 0}
-      <button class="h-[42px] cursor-not-allowed p-2 text-[#999999]" disabled aria-disabled={true}
-        ><X_Icon size={18} /></button
-      >
+      <button class="h-[42px] p-2 text-[#999999]" disabled aria-disabled={true}><X_Icon size={18} /></button>
     {/if}
     <button
       disabled
       aria-disabled={true}
-      class="bg-ddg-blue30 text-text-dark h-[42px] cursor-not-allowed rounded-r-lg px-4 py-1.5"
+      class="bg-ddg-blue30 text-text-dark h-[42px] rounded-r-lg px-4 py-1.5"
       bind:this={workingBtn}><Search size={18} /></button
     >
   {/if}
