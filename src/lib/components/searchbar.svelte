@@ -33,6 +33,13 @@
     mode = 'copy';
   }
 
+  function enterSearchMode() {
+    value = '';
+    searchUrl = `${page.url.origin}?q=`;
+    displayText = 'Type a question, click search';
+    mode = 'search';
+  }
+
   async function copyUrl() {
     try {
       await navigator.clipboard.writeText(searchUrl);
@@ -55,7 +62,16 @@
     }
   }
 
+  // Update coords on DOM load
   $effect(() => updateCoords());
+
+  // Autoscroll to the right
+  $effect(() => {
+    if (workingBox && workingValue) {
+      console.log('fire');
+      workingBox.scrollLeft = workingBox.scrollWidth;
+    }
+  });
 </script>
 
 <svelte:window onresize={updateCoords} />
@@ -82,13 +98,14 @@
       onclick={enterCopyMode}><Search size={18} /></button
     >
   {:else if mode === 'copy'}
-    <div in:blur={{ duration: 250 }} class="flex h-[42px] flex-grow items-center pl-3">{searchUrl}</div>
-    <button
-      class="hover:text-text h-[42px] cursor-pointer p-2 text-[#999999]"
-      onclick={() => {
-        value = '';
-        mode = 'search';
-      }}><X_Icon size={18} /></button
+    <div
+      in:blur={{ duration: 250 }}
+      class="flex h-[42px] flex-grow items-center overflow-x-scroll pl-3 text-nowrap"
+    >
+      {searchUrl}
+    </div>
+    <button class="hover:text-text h-[42px] cursor-pointer p-2 text-[#999999]" onclick={enterSearchMode}
+      ><X_Icon size={18} /></button
     >
     <button
       class="bg-ddg-blue30 hover:bg-ddg-blue40 text-text-dark h-[42px] cursor-pointer rounded-r-lg px-4 py-1.5"
@@ -96,7 +113,11 @@
     >
   {:else}
     <div class="fixed top-0 left-0 h-screen w-screen cursor-not-allowed"></div>
-    <div bind:this={workingBox} in:blur={{ duration: 250 }} class="flex h-[42px] flex-grow items-center pl-3">
+    <div
+      bind:this={workingBox}
+      in:blur={{ duration: 250 }}
+      class="flex h-[42px] flex-grow items-center overflow-x-auto pr-1 pl-3 whitespace-nowrap"
+    >
       {workingValue}
     </div>
     {#if value.length > 0}
